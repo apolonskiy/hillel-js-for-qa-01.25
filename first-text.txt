@@ -3,3 +3,5 @@ my first text
 new row
 
 more changes
+
+some other text
