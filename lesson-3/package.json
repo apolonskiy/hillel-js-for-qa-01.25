@@ -1,0 +1,16 @@
+{
+  "name": "lesson-3",
+  "version": "1.0.0",
+  "description": "lesson 3",
+  "main": "index.js",
+  "scripts": {
+    "test-first-script": "node ./index.js",
+    "e2e:dev": "playwrgiht test ./test-file.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "chalk": "^5.4.1"
+  }
+}
