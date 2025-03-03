@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+
+		"noEmitOnError": true,
+
+		"target": "ESNext",
+
+        "skipLibCheck": true,
+
+        "declaration": true
+        
+    }
+}
