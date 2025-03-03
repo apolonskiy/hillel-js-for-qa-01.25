@@ -1,0 +1,20 @@
+{
+  "name": "eslint",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix"
+  },
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@stylistic/eslint-plugin-js": "^4.2.0",
+    "eslint": "^9.21.0",
+    "globals": "^16.0.0"
+  }
+}
