@@ -1,0 +1,28 @@
+{
+  "name": "lesson-14",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "description": "",
+  "dependencies": {
+    "@eslint/js": "^9.21.0",
+    "@stylistic/eslint-plugin-js": "^4.2.0",
+    "axios": "^1.8.1",
+    "eslint": "^9.21.0",
+    "eslint-plugin-jest": "^28.11.0",
+    "globals": "^16.0.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.6.0",
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "jest-html-reporters": "^3.1.7"
+  }
+}
