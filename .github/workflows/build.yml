@@ -12,9 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
+      - name: check node
+        run: node -v
       - name: Install dependecies
         working-directory: ./lesson-14
-        run: npm ci
+        run: npm i
       - name: Run lint
         working-directory: ./lesson-14
         run: npm run lint
@@ -28,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v3
       - name: Install dependecies
         working-directory: ./lesson-14
-        run: npm ci
+        run: npm i
       - name: Run api test
         working-directory: ./lesson-14
         run: npm run test
