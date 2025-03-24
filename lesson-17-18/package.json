@@ -1,0 +1,26 @@
+{
+  "name": "lesson-17",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:run:headed": "cypress run --headed",
+    "cypress:run:headed:firefox": "cypress run --headed --browser=firefox",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@4tw/cypress-drag-drop": "^2.3.0",
+    "@eslint/js": "^9.23.0",
+    "@stylistic/eslint-plugin-js": "^4.2.0",
+    "cypress": "^14.2.0",
+    "cypress-xpath": "^2.0.1",
+    "eslint": "^9.23.0",
+    "eslint-plugin-cypress": "^4.2.0",
+    "globals": "^16.0.0"
+  }
+}
