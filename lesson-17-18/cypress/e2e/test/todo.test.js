@@ -145,3 +145,38 @@ describe('example to-do app', {testIsolation: false}, () => {
     })
   })
 })
+
+
+describe('Selectors tests', {testIsolation: false}, () => {
+  beforeEach(() => {
+    cy.visit('https://devexpress.github.io/testcafe/example/')
+  })
+
+  it('displays two todo items by default', () => {
+    cy.get('[for="tried-test-cafe"]').click();
+    const index = 1;
+    cy.get('[id="slider"] span')
+      .drag(`[class="slider-value"]:nth-of-type(${index})`);
+    cy.task('log', (((index-1)/9)*100).toFixed(index % 10 === 0 || index === 1 ?  0 : 4))
+    const expectedStyle = (((index-1)/9)*100).toFixed(index % 10 === 0 || index === 1 ?  0 : 4)    
+    cy.get('[id="slider"] span')
+      .should('have.attr', 'style', `left: ${expectedStyle}%;`);
+    const expectedText = 'This is some really longText'.repeat(5)    
+    cy.get('[data-testid="comments-area"]').type(expectedText, {delay: 0})
+    cy.get('[data-testid="comments-area"]').should('have.value', expectedText)
+    cy.get('[data-testid="preferred-interface-select"]').select('Both')
+    cy.get('[data-testid="macos-radio"]').click().should('be.checked')
+    const idsArray = [0, 1, 2, 3, 4]
+    idsArray.forEach((id) => {
+      id%2===0 ? 
+        cy.get('fieldset:not([id="tried-section"]) [data-testid*="-checkbox"]').eq(id).click().should('be.checked') : 
+        cy.get('fieldset:not([id="tried-section"]) [data-testid*="-checkbox"]').eq(id).should('not.be.checked')
+    })
+    cy.get('[data-testid="name-input"]').should('not.have.value')
+    cy.get('[data-testid="populate-button"]').click()
+    cy.get('[data-testid="name-input"]').should('have.value', 'Peter Parker')
+    cy.get('[data-testid="name-input"]').type('{selectAll}{del}').type('Andrii')
+    cy.get('[data-testid="name-input"]').should('have.value', 'Andrii').type('{enter}')
+    cy.get('h1[data-testid="thank-you-header"]').should('be.visible').should('have.text', 'Thank you, Andrii!')
+  })
+})
