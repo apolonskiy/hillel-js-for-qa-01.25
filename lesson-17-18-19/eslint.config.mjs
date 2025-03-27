@@ -28,7 +28,8 @@ export default [
       "@stylistic/js/indent": ["error", 2, { "SwitchCase": 2 }],
       "@stylistic/js/space-in-parens": ["error", "never"],
       "@stylistic/js/arrow-spacing": [2, { "before": true, "after": true }],
-      'cypress/unsafe-to-chain-command': 'warn'
+      'cypress/unsafe-to-chain-command': 'warn',
+      'cypress/no-unnecessary-waiting': 'warn'
     }
   }
 ];
