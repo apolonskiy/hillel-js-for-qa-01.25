@@ -17,4 +17,9 @@
 import './commands'
 import 'cypress-xpath';
 import '@4tw/cypress-drag-drop';
-import '@cypress/puppeteer/support'
+import '@cypress/puppeteer/support';
+// import 'cypress-mochawesome-reporter/register';
+import '@shelex/cypress-allure-plugin';
+import {addMatchImageSnapshotCommand} from '@simonsmith/cypress-image-snapshot/command'
+
+addMatchImageSnapshotCommand();

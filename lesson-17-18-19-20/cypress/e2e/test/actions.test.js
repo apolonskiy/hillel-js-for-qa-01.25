@@ -4,26 +4,33 @@ const profilePage = new ProfilePage();
 
 describe('Multi page checks', () => {
   beforeEach(() => {
+    // cy.task('log', `LogAaa>${Cypress.env('TEST_VAR_SDF')}`);
+    // cy.task('log', `Log123 ${process.env.TEST_VAR_SDF}`);
+    // cy.task('log', `Config value base url ${Cypress.config('baseUrl')}`)
     cy.visit('')
+    // cy.log(process.env.SHOWCASE_CY)
+    // cy.log(Cypress.env('SHOWCASE_CY'))
+    // console.log(Cypress.env('SHOWCASE_CY'))
   })
-  //   it('Click on link which leads to other page', () => {
+  // it('Click on link which leads to other page', () => {
 
-  //     // cy.get('a[href*="linkedin"]').invoke('removeAttr', 'target');
+ 
+  //   cy.origin('https://www.linkedin.com', () => {
+  //     cy.get('a[href*="linkedin"]').invoke('removeAttr', 'target');
   //     cy.get('a[href*="linkedin"]').click()
-  //     // cy.origin('www.linkedin.com', () => {
-  //     //   cy.url().should('not.equal', 'https://qauto.forstudy.space')
-  //     // })
-
-  //     cy
-  //       .puppeteer('switchToTabAndGetContent')
-  //       .should('contain', 'https://www.linkedin.com')
+  //     cy.url().should('not.equal', 'https://qauto.forstudy.space')
   //   })
 
-  //   it('linked in navi', () => {
-  //     cy.visit('https://www.linkedin.com');
-  //   })
+  //   // cy
+  //   //   .puppeteer('switchToTabAndGetContent')
+  //   //   .should('contain', 'https://www.linkedin.com')
+  // })
 
-  it.skip('Drag n Drop check with native Cypress and extension', () => {
+  // it('linked in navi', () => {
+  //   cy.visit('https://www.linkedin.com');
+  // })
+
+  it('Drag n Drop check with native Cypress and extension', () => {
     cy.visit('https://devexpress.github.io/testcafe/example/');
     cy.get('[data-testid="tried-testcafe-checkbox"]').click()
 
@@ -58,7 +65,8 @@ describe('Multi page checks', () => {
     ///----------
     // cy.login('hillel-1@aaa.com', 'testHillel1!')
     //-------
-    landingPage.executeLogin('hillel-1@aaa.com', 'testHillel1!')
+
+    landingPage.executeLogin(Cypress.env('defaultUserEmail'), Cypress.env('defaultUserPassword'))
     profilePage.selectProfile();
     profilePage.updateProfileImage('./cypress/fixtures/images/profile-image.jpeg')
   })
