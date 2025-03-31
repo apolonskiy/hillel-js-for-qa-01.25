@@ -1,6 +1,17 @@
 export default class LandingPage {
   pageUrl = '/'
 
+  selectors = {
+    // headerHomeBtn: cy.contains('nav a', 'Home'), // DO NOT DO THIS
+    headerHomeButton: () => cy.contains('nav a', 'Home'),
+    headerAboutButton: () => cy.contains('nav button', 'About'),
+    signUpButton: () => cy.contains('button', 'Sign up'),
+    signInButton: () => cy.contains('button', 'Sign In'),
+    signInFormEmailInput: () => cy.get('form input[name="email"]'),
+    signInFormPasswordInput: () => cy.get('form input[name="password"]'),
+    signInFormSignInButton: () => cy.contains('button', 'Login')
+  }
+
   get headerHomeButton() {
     return cy.contains('nav a', 'Home')
   }
@@ -29,6 +40,10 @@ export default class LandingPage {
     return cy.contains('button', 'Login')
   }
 
+  get signInFormCloseButton(){
+    return cy.get('button[class="close"]')
+  }
+
   //   clickHeaderHomeButton(){
   //     this.headerHomeButton.click();
   //     return this;
@@ -45,7 +60,7 @@ export default class LandingPage {
   //   }
 
   executeLogin(email, password){
-    this.signInButton.click()
+    this.selectors.signInButton().click()
     this.signInFormEmailInput.type(email)
     this.signInFormPasswordInput.type(password)
     this.signInFormSignInButton.click()
