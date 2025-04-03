@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run -s cypress/e2e/test",
+    "cypress:run": "cypress run -s cypress/e2e/test --browser chrome",
     "cypress:run:visual": "cypress run -s cypress/e2e/snapshotTest",
     "cypress:run:headed": "cypress run --headed",
     "cypress:run:headed:firefox": "cypress run --headed --browser=firefox",
@@ -35,6 +35,7 @@
   "dependencies": {
     "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-multi-reporters": "^2.0.5",
-    "cypress-parallel": "^0.15.0"
+    "cypress-parallel": "^0.15.0",
+    "cypress-plugin-api": "^2.11.2"
   }
 }

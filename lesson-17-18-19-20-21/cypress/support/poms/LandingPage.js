@@ -9,7 +9,8 @@ export default class LandingPage {
     signInButton: () => cy.contains('button', 'Sign In'),
     signInFormEmailInput: () => cy.get('form input[name="email"]'),
     signInFormPasswordInput: () => cy.get('form input[name="password"]'),
-    signInFormSignInButton: () => cy.contains('button', 'Login')
+    signInFormSignInButton: () => cy.contains('button', 'Login'),
+    signInFormWorngCredsAlert: () => cy.contains('form p[class*="alert-danger"]', 'Wrong email or password')
   }
 
   get headerHomeButton() {

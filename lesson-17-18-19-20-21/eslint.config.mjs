@@ -6,7 +6,7 @@ import pluginCypress from 'eslint-plugin-cypress/flat'
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {files: ['**/**.mjs', '**/**.js']},
-  {ignores: ['html*']},
+  {ignores: ['html*', 'cypress/reports*', 'results*', 'runner-results*', 'allure-reports*']},
   {languageOptions: 
     { 
       globals: globals.node,
