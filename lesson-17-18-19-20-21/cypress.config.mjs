@@ -30,6 +30,9 @@ export default defineConfig({
   // },
   e2e: {
     specPattern: 'cypress/e2e/**/*.test.{js,jsx,ts,tsx}',
+    env: {
+      snapshotOnly: true
+    },
     setupNodeEvents(on, config) {
       // mochawesome(on)
       allureWriter(on, config)

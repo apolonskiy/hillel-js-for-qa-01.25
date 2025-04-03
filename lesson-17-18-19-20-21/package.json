@@ -35,6 +35,7 @@
   "dependencies": {
     "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-multi-reporters": "^2.0.5",
-    "cypress-parallel": "^0.15.0"
+    "cypress-parallel": "^0.15.0",
+    "cypress-plugin-api": "^2.11.2"
   }
 }

@@ -20,6 +20,7 @@ import '@4tw/cypress-drag-drop';
 import '@cypress/puppeteer/support';
 // import 'cypress-mochawesome-reporter/register';
 import '@shelex/cypress-allure-plugin';
+import 'cypress-plugin-api';
 import {addMatchImageSnapshotCommand} from '@simonsmith/cypress-image-snapshot/command'
 
 addMatchImageSnapshotCommand();
