@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run -s cypress/e2e/test",
+    "cypress:run": "cypress run -s cypress/e2e/test --browser chrome",
     "cypress:run:visual": "cypress run -s cypress/e2e/snapshotTest",
     "cypress:run:headed": "cypress run --headed",
     "cypress:run:headed:firefox": "cypress run --headed --browser=firefox",

@@ -27,6 +27,7 @@ export default class Garage {
   // }
   // */
   createCar(carData){
+    cy.wait(500)
     this.selectors.addCarButton().should('be.visible').click();
     cy.wait(1000);
     this.selectors.addCarDialogCarBrandselect().select(carData.carBrand);

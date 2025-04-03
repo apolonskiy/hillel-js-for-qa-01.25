@@ -4,6 +4,9 @@ const profilePage = new ProfilePage();
 const garagePage = new GaragePage();
 
 describe('Multi page checks', () => {
+  beforeEach(() => {
+    cy.visit('')
+  })
   // it('Click on link which leads to other page', () => {
  
   //   cy.origin('https://www.linkedin.com', () => {
@@ -102,7 +105,7 @@ describe('Multi page checks', () => {
   })
 })
 
-describe('API per - post condition tests', () => {
+describe('API pre - post condition tests', () => {
   beforeEach(() => {
     cy.visit('')
   })
@@ -157,7 +160,7 @@ describe('API per - post condition tests', () => {
       console.log(resp.headers['set-cookie'][0].split('=')[1].split(';').shift());
       cy.setCookie('sid', resp.headers['set-cookie'][0].split('=')[1].split(';').shift())
     })
-
+    cy.wait(1000)
     cy.visit(garagePage.pageUrl);
     cy.intercept('POST', '/api/cars').as('createCarResponse');
     garagePage.createCar({
@@ -174,7 +177,7 @@ describe('API per - post condition tests', () => {
   })
 
 
-    it.only('Login via API NPM package and proceed from there', function () {
+  it('Login via API NPM package and proceed from there', function () {
     cy.api({
       method: 'POST',
       url: '/api/auth/signin',
