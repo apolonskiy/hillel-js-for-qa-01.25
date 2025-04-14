@@ -13,7 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './tests-selectors',
+  testDir: './tests-qaauto',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -36,7 +36,9 @@ export default defineConfig({
   },
 
   use: {
+    baseURL: 'https://qauto.forstudy.space',
     testIdAttribute: 'data-testid',
+    actionTimeout: 4000,
     headless: true,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,

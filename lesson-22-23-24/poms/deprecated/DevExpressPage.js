@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import BasePage from './BasePage';
 
-export default class DevExpressPage extends BasePage{
+export default class DevExpressPage extends BasePage {
   selectors = {
     nameInput: this.page.locator('input[data-testid="name-input"]'),
     checkboxesFieldsetLegend: this.page.locator('fieldset legend', { hasText: 'Which features are important to you' }),
