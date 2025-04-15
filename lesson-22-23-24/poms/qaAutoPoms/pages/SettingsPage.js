@@ -1,4 +1,6 @@
 import { BasePage } from '../basePoms';
+import { expect } from '@playwright/test';
+
 export default class SettingsPage extends BasePage {
   constructor(page) {
     super(page, '/panel/settings');
@@ -34,16 +36,11 @@ export default class SettingsPage extends BasePage {
   }
 
   async isCurrencySelected(currency){
-    await this.page.waitForTimeout(350);
-    const className = await this.selectors.currencyButton(currency).getAttribute('class');
-    return className.includes('-active');
+    await expect(this.selectors.currencyButton(currency)).toHaveClass(/-active/);
   }
 
   async areUnitsSelected(units){
-    await this.page.waitForTimeout(350);
-    const className = await this.selectors.unitsOfDistanceButton(units).getAttribute('class');
-    console.log('className', className);
-    return className.includes('-active');
+    await expect(this.selectors.unitsOfDistanceButton(units)).toHaveClass(/-active/);
   }
 
   async changeEmail(newEmail, password){
@@ -60,7 +57,7 @@ export default class SettingsPage extends BasePage {
   }
 
   async isSnackbarVisible(expectedText){
-    return this.selectors.snackBar(expectedText).isVisible();
+    await expect(this.selectors.snackBar(expectedText)).toBeVisible();
   }
 
 }

@@ -9,7 +9,7 @@ test.describe('CodeGen Test', () => {
     await page.goto('https://guest:welcome2qauto@qauto.forstudy.space/');
   });
 
-  test.skip('Verify auto-generated code', async({ page }) => {
+  test('Verify auto-generated code', async({ page }) => {
     await expect(page.getByRole('button', { name: 'Sign In' })).toBeVisible();
     await page.getByRole('button', { name: 'Sign In' }).click();
     await page.getByRole('textbox', { name: 'Email' }).click();
