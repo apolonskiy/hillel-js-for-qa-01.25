@@ -1,6 +1,9 @@
-// @ts-check
+// @ts-nocheck
 import { defineConfig, devices } from '@playwright/test';
-
+import dotenv from  'dotenv';
+// import * as path from 'path';
+dotenv.config({path: '.env.test'});
+// dotenv.config({path: `./configs/.env.${process.env.TEST_ENV}`});
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -9,6 +12,8 @@ import { defineConfig, devices } from '@playwright/test';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+// console.log(process.env.BASE_FILE)
+// console.log(process.env.NON_BASE_FILE)
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
@@ -36,7 +41,7 @@ export default defineConfig({
   },
 
   use: {
-    baseURL: 'https://qauto.forstudy.space',
+    baseURL: process.env.BASE_URL || 'https://qauto.forstudy.space',
     testIdAttribute: 'data-testid',
     actionTimeout: 4000,
     headless: true,
