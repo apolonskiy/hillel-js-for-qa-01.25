@@ -2,7 +2,7 @@
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from  'dotenv';
 // import * as path from 'path';
-dotenv.config({path: '.env.test'});
+dotenv.config({ path: '.env.test' });
 // dotenv.config({path: `./configs/.env.${process.env.TEST_ENV}`});
 /**
  * Read environment variables from file.
@@ -28,7 +28,17 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : 2, //1, 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  // reporter: [['html', { open: 'always', outputFolder: 'html-report' }]],
+  // reporter: [['blob', { outputFile: `./blob-report/report-${process.env.NODE_INDEX}.zip` }]],
+  reporter: process.env.TESTOMATIO ? [
+    ['list'],
+    [
+      '@testomatio/reporter/lib/adapter/playwright.js',
+      {
+        apiKey: process.env.TESTOMATIO,
+      },
+    ],
+  ] : 'html' ,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 
   expect: { 
@@ -47,7 +57,7 @@ export default defineConfig({
     headless: true,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
-    video: 'on-first-retry',
+    video: 'always',
     trace: 'on-first-retry',
     httpCredentials: {
       username: 'guest',
