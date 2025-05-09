@@ -38,7 +38,7 @@ export default defineConfig({
         apiKey: process.env.TESTOMATIO,
       },
     ],
-  ] : 'html' ,
+  ] : 'list' ,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 
   expect: { 
@@ -100,6 +100,13 @@ export default defineConfig({
     {
       name: 'Google Chrome',
       use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    },
+
+    { name: 'setup', testMatch: /.*\.setup\.js/, testDir: './setup' },
+    {
+      name: 'Google Chrome Setup',
+      use: { ...devices['Desktop Chrome'], channel: 'chrome', storageState: 'session-storage.json' },
+      dependencies: ['setup']
     },
   ],
 
