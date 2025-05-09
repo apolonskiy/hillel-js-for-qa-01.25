@@ -1,42 +1,54 @@
-import { test, expect, request } from '@playwright/test';
-import { SettingsPage } from '../poms/qaAutoPoms/pages';
+import { test, expect } from '@playwright/test';
+import { SettingsPage, LandingPage } from '../poms/qaAutoPoms';
+import { SettingsUtils } from '../utils';
 
 
 let settingsPage;
+let landingPage;
+let signInModal;
+let settingsUtils;
+
+const setLocalStorageValue = async(page, keyValueObj) => {
+  // eslint-disable-next-line
+  await page.evaluate(({ key, value }) => localStorage.setItem(key, value) , keyValueObj);
+};
+
+const setSessionStorageValue = async(page, keyValueObj) => {
+  // eslint-disable-next-line
+  await page.evaluate(({ key, value }) => sessionStorage.setItem(key, value) , keyValueObj);
+};
+
 test.describe('Settings page tests', {
   tag: ['@settings', '@profile'],
 },
 () => {
-  test.beforeEach(async({ page, context, baseURL }) => {
+  test.beforeEach(async({ page, baseURL }) => {
     settingsPage = new SettingsPage(page);
+    landingPage = new LandingPage(page);
+    // signInModal = new SignInModal(page);
+    settingsUtils = new SettingsUtils(page);
+
     await page.goto(baseURL);
-    await expect(page.getByRole('button', { name: 'Sign In' })).toBeVisible();
-    await page.getByRole('button', { name: 'Sign In' }).click();
-    await page.getByRole('textbox', { name: 'Email' }).click();
-    await page.getByRole('textbox', { name: 'Email' }).fill('hillel-1@aaa.com');
-    await page.getByRole('textbox', { name: 'Password' }).click();
-    await page.getByRole('textbox', { name: 'Password' }).fill('testHillel1!');
-    await page.getByRole('button', { name: 'Login' }).click();
-    await page.waitForTimeout(1500);
-    const allCookies = await context.cookies();
-    const apiReuqest = await request.newContext({ storageState: {
-      cookies: allCookies
-    } });
-    await apiReuqest.put('/api/users/settings', { data: {
-      currency: 'usd',
-    } });
-    await page.request.put('/api/users/settings', { data: {
-      distanceUnits: 'km',
-    } });
+    signInModal = await landingPage.clickSignInButton();
+    await signInModal.executeLogin();
+    // ___________
+    // Commented out below for another example;
+    //_________
+    // const allCookies = await context.cookies();
+    // const apiReuqest = await request.newContext({ storageState: {
+    //   cookies: allCookies
+    // } });
+    // await apiReuqest.put('/api/users/settings', { data: {
+    //   currency: 'usd',
+    // } });
+    // await page.request.put('/api/users/settings', { data: {
+    //   distanceUnits: 'km',
+    // } });
+    await settingsUtils.updateSettings('usd', 'km');
   });
 
-  test.afterEach(async({ page }) => {
-    await page.request.put('/api/users/settings', { data: {
-      currency: 'usd',
-    } });
-    await page.request.put('/api/users/settings', { data: {
-      distanceUnits: 'km',
-    } });
+  test.afterEach(async() => {
+    await settingsUtils.updateSettings('usd', 'km');
   });
 
   test('Can Update currency, units and assert on invalid Change Email or Password actions',
@@ -45,7 +57,16 @@ test.describe('Settings page tests', {
     }, async() => {
       await test.step('Initial assertion of default state',async() => {
         await settingsPage.openPage();
+        await settingsPage.page.waitForTimeout(1000);
+        const evaluateValues = { key: 'settingsKey', value: 'settingsValue' };
+        await setLocalStorageValue(settingsPage.page, evaluateValues);
+        await setSessionStorageValue(settingsPage.page, evaluateValues);
+        //eslint-disable-next-line
+        const localStorValue = await settingsPage.page.evaluate(({key}) => localStorage.getItem(key), { key: 'settingsKey' });
+        console.log('THIS IS FROM CONSOLE',localStorValue);
         await settingsPage.page.reload();
+        // eslint-disable-next-line
+        await settingsPage.page.evaluate(({key}) => localStorage.removeItem(key), { key: 'settingsKey' });
         await settingsPage.page.waitForTimeout(2000);
         await settingsPage.isCurrencySelected('USD');
         await settingsPage.areUnitsSelected('km');
