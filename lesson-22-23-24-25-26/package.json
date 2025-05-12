@@ -18,6 +18,7 @@
     "test:headed:chrome:grep:settings-test": "playwright test --headed --project='Google Chrome' --workers=1 --grep='@settings-test'",
     "test:headed:chrome:grep:settings-fixture": "playwright test --headed --project='Google Chrome' --workers=1 --grep='@settings-fixture'",
     "test:headed:chrome:grep:settings-setup": "playwright test --headed --project='Google Chrome Setup' --workers=1 --grep='@settings-setup'",
+    "test:headed:chrome:grep:settings-api": "playwright test --headed --project='Google Chrome' --workers=1 --grep='@settings-api'",
     "test:headed:chrome:grep:settings-describe": "playwright test --headed --project='Google Chrome' --workers=1 --grep '(?=.*@settings)(?=.*@profile)'",
     "test:headed:chrome:sharded": "playwright test --headed --project='Google Chrome' --workers=1 --shard=$NODE_INDEX/2",
     "lint": "eslint",
