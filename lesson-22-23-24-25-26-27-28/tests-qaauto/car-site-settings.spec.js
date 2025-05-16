@@ -109,6 +109,8 @@ test.describe('Settings page tests', {
   
         await settingsPage.changePassword('testHillel1!', 'testHillel1!');
         await expect(settingsPage.selectors.snackBar('New password should not be the same')).toBeVisible();
+
+        await expect(settingsPage.selecotrs.changeEmailEmailInput).toBeDisabled()
       });
     });
 });

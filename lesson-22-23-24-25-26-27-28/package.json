@@ -7,7 +7,7 @@
     "test:headless": "playwright test",
     "test:headed": "playwright test --headed",
     "test:headed:safari": "playwright test --headed --project=webkit",
-    "test:headed:chromium": "playwright test --headed --project=chromium",
+    "test:headed:chromium": "playwright test --headed --project=chromium --grep='@settings-test'",
     "test:headed:chrome": "playwright test --headed --project='Google Chrome' --workers=1",
     "test:headed:chrome:dev:cp": "cp ./configs/.env.dev .env.test &&  playwright test --headed --project='Google Chrome' --workers=1",
     "test:headed:chrome:prod:cp": "cp ./configs/.env.prod .env.test && playwright test --headed --project='Google Chrome' --workers=1",
@@ -28,7 +28,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.51.1",
+    "@playwright/test": "1.50.0",
     "@stylistic/eslint-plugin-js": "^4.2.0",
     "@testomatio/reporter": "^1.6.16",
     "@types/node": "^22.14.0",
