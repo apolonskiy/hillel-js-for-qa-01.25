@@ -1,0 +1,5 @@
+docker run -v "$PWD":/e2e --workdir /e2e --ipc=host  -it --rm  mcr.microsoft.com/playwright:v1.52.0 npm run test:headed:chrome:grep:settings-test
+
+docker run -v "$PWD":/e2e --workdir /e2e --ipc=host  -it --rm --entrypoint /bin/bash  mcr.microsoft.com/playwright:v1.52.0 -c "npm run test:headed:chrome:grep:settings-test"
+
+docker run -v "$PWD":/new-e2e --workdir /new-e2e --ipc=host  -it --rm  pw-local:2.0 /bin/bash

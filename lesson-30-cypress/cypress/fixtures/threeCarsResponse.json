@@ -1,0 +1,41 @@
+{
+    "status": "ok",
+    "data": [
+        {
+            "id": 123,
+            "carBrandId": 1,
+            "carModelId": 1,
+            "initialMileage": 54363,
+            "updatedMileageAt": "2025-04-03T16:46:08.000Z",
+            "carCreatedAt": "2025-04-03T16:46:08.000Z",
+            "mileage": 54363,
+            "brand": "Audi",
+            "model": "TT",
+            "logo": "audi.png"
+        },
+        {
+            "id": 321,
+            "carBrandId": 2,
+            "carModelId": 8,
+            "initialMileage": 123000,
+            "updatedMileageAt": "2025-04-03T16:45:12.000Z",
+            "carCreatedAt": "2025-04-03T16:45:12.000Z",
+            "mileage": 123000,
+            "brand": "BMW",
+            "model": "X5",
+            "logo": "bmw.png"
+        },
+        {
+            "id": 456,
+            "carBrandId": 5,
+            "carModelId": 21,
+            "initialMileage": 333,
+            "updatedMileageAt": "2025-04-03T16:45:12.000Z",
+            "carCreatedAt": "2025-04-03T16:45:12.000Z",
+            "mileage": 333,
+            "brand": "Fiat",
+            "model": "Panda",
+            "logo": "fiat.png"
+        }
+    ]
+}

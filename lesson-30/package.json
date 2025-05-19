@@ -1,0 +1,42 @@
+{
+  "name": "lesson-22",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test:headless": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:headed:safari": "playwright test --headed --project=webkit",
+    "test:headed:chromium": "playwright test --project=chromium --grep='@settings-test'",
+    "test:headed:chrome": "playwright test --headed --project='Google Chrome' --workers=1",
+    "test:headed:chrome:dev:cp": "cp ./configs/.env.dev .env.test &&  playwright test --headed --project='Google Chrome' --workers=1",
+    "test:headed:chrome:prod:cp": "cp ./configs/.env.prod .env.test && playwright test --headed --project='Google Chrome' --workers=1",
+    "test:headed:chrome:source": "export $(cat .env) && playwright test --headed --project='Google Chrome' --workers=1",
+    "test:headed:chrome:debug": "playwright test --headed --project='Google Chrome' --workers=1 --debug",
+    "test:headed:chrome:settings": "playwright test settings --headed --project='Google Chrome' --workers=1",
+    "test:headed:chrome:settings:testName": "playwright test -g 'invalid Change Email or Password actions'  --headed --project='Google Chrome' --workers=1",
+    "test:headed:chrome:grep:settings-test": "playwright test --project='chromium' --workers=1 --grep='@settings-test'",
+    "test:headed:chrome:grep:settings-fixture": "playwright test --headed --project='Google Chrome' --workers=1 --grep='@settings-fixture'",
+    "test:headed:chrome:grep:settings-setup": "playwright test --headed --project='Google Chrome Setup' --workers=1 --grep='@settings-setup'",
+    "test:headed:chrome:grep:settings-api": "playwright test --project='chromium' --workers=1 --grep='@settings-api'",
+    "test:headed:chrome:grep:settings-describe": "playwright test --headed --project='Google Chrome' --workers=1 --grep '(?=.*@settings)(?=.*@profile)'",
+    "test:headed:chrome:sharded": "playwright test --headed --project='Google Chrome' --workers=1 --shard=$NODE_INDEX/2",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@stylistic/eslint-plugin-js": "^4.2.0",
+    "@testomatio/reporter": "^1.6.16",
+    "@types/node": "^22.14.0",
+    "dotenv": "^16.5.0",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-playwright": "^2.2.0",
+    "playwright": "^1.52.0",
+    "prettier": "^3.5.3"
+  }
+}
