@@ -1,0 +1,6 @@
+docker run -it -v "$PWD":/e2e -w /e2e --rm cypress/included:cypress-14.3.3-node-22.15.1-chrome-136.0.7103.113-1-ff-138.0.3-edge-136.0.3240.64-1
+
+docker run -it -v "$PWD":/e2e -w /e2e --rm cypress/included:cypress-14.3.3-node-22.15.1-chrome-136.0.7103.113-1-ff-138.0.3-edge-136.0.3240.64-1 --browser firefox
+
+docker run -it -v "$PWD":/e2e -w /e2e --rm --entrypoint /bin/bash cypress/included:cypress-14.3.3-node-22.15.1-chrome-136.0.7103.113-1-ff-138.0.3-edge-136.0.3240.64-1 -c "npx cypress install && npm run cypress:run"
+Так працює ^^ - на ясно навіщо треба ще раз його інсталити, дивно як на мене

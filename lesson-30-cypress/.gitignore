@@ -1,0 +1,9 @@
+node_modules
+cypress/screenshots
+cypress/downloads
+cypress/videos
+runner-results
+parallel-weights.json
+results
+reports
+allure-results
