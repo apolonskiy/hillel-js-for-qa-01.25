@@ -12,7 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-        node-version: latest
+        with:
+          node-version: latest
       - name: check node
         run: node -v
       - name: Install dependecies
