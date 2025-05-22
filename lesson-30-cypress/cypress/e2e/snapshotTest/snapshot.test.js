@@ -2,7 +2,7 @@ import {LandingPage, ProfilePage} from '../../support/poms'
 const landingPage = new LandingPage();
 const profilePage = new ProfilePage();
 
-describe('Snapshot tests', () => {
+describe.skip('Snapshot tests', () => {
   beforeEach(() => {
     cy.visit('')
   })

@@ -32,13 +32,14 @@ export default defineConfig({
   // reporter: [['blob', { outputFile: `./blob-report/report-${process.env.NODE_INDEX}.zip` }]],
   reporter: process.env.TESTOMATIO ? [
     ['list'],
+    ['html', { open: 'never' }],
     [
       '@testomatio/reporter/lib/adapter/playwright.js',
       {
         apiKey: process.env.TESTOMATIO,
       },
     ],
-  ] : 'list' ,
+  ] : [['list'] ,['html', { open: 'never' }]] ,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 
   expect: { 
@@ -111,7 +112,7 @@ export default defineConfig({
 
     {
       name: 'Chromium Setup',
-      use: { ...devices['Desktop Chrome'],storageState: 'session-storage.json' },
+      use: { ...devices['Desktop Chrome'], storageState: 'session-storage.json' },
       dependencies: ['setup']
     },
   ],
