@@ -28,7 +28,7 @@ jobs:
     container:
       image: node:22-slim 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: check node
         run: node -v
       - name: Install dependecies
@@ -51,3 +51,28 @@ jobs:
       - name: Run api test
         working-directory: ./lesson-14
         run: npm run test
+  tests-pw-custom-image: 
+    name: 'PW e2e tests on custom image'
+    if: ${{ always() }}
+    needs: lint-pw
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Install dependencies
+        working-directory: ./lesson-30
+        run: npm ci
+      - name: Install Playwright Browsers
+        working-directory: ./lesson-30
+        run: npx playwright install --with-deps 
+      - name: Run api test
+        working-directory: ./lesson-30
+        run: npm run test:headed:chromium
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

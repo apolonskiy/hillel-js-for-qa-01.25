@@ -38,7 +38,7 @@ export default defineConfig({
         apiKey: process.env.TESTOMATIO,
       },
     ],
-  ] : 'list' ,
+  ] : ['list' ,['html', { open: 'never' }]] ,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 
   expect: { 
