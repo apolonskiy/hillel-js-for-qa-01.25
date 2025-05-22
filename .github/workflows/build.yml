@@ -97,7 +97,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: playwright-report-custom
+          name: playwright-report-default
           path: |
                 lesson-30/playwright-report/
                 lesson-30/test-results/
