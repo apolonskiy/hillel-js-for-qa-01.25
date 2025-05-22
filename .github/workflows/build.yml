@@ -72,6 +72,32 @@ jobs:
         run: npm run test:headed:chromium
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
+        working-directory: ./lesson-30
+        with:
+          name: playwright-report-custom
+          path: |
+                playwright-report/
+                test-results/
+          retention-days: 30
+  tests-pw-default-image: 
+    name: 'PW e2e tests on default image'
+    needs: tests-pw-custom-image
+    runs-on: ubuntu-latest
+    container:
+     image: mcr.microsoft.com/playwright:v1.52.0
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        working-directory: ./lesson-30
+        run: npm ci
+      - name: Run e2e tests
+        working-directory: ./lesson-30
+        run: |
+              npm run test:headed:chrome:grep:settings-fixture
+              npm run test:headed:chrome:grep:settings-setup
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        working-directory: ./lesson-30
         with:
           name: playwright-report-custom
           path: |

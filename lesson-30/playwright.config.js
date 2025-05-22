@@ -111,7 +111,7 @@ export default defineConfig({
 
     {
       name: 'Chromium Setup',
-      use: { ...devices['Desktop Chrome'],storageState: 'session-storage.json' },
+      use: { ...devices['Desktop Chrome'], storageState: 'session-storage.json' },
       dependencies: ['setup']
     },
   ],
