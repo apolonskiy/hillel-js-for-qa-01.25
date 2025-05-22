@@ -26,7 +26,7 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : 2, //1, 
+  workers: process.env.CI ? 1 : 1, //1, 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: [['html', { open: 'always', outputFolder: 'html-report' }]],
   // reporter: [['blob', { outputFile: `./blob-report/report-${process.env.NODE_INDEX}.zip` }]],
@@ -57,8 +57,8 @@ export default defineConfig({
     headless: true,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
-    video: 'always',
-    trace: 'on-first-retry',
+    video: 'retain-on-failure',
+    trace: 'on',
     httpCredentials: {
       username: 'guest',
       password: 'welcome2qauto',
@@ -106,6 +106,12 @@ export default defineConfig({
     {
       name: 'Google Chrome Setup',
       use: { ...devices['Desktop Chrome'], channel: 'chrome', storageState: 'session-storage.json' },
+      dependencies: ['setup']
+    },
+
+    {
+      name: 'Chromium Setup',
+      use: { ...devices['Desktop Chrome'],storageState: 'session-storage.json' },
       dependencies: ['setup']
     },
   ],

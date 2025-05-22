@@ -7,7 +7,7 @@ export default class SignInModal extends BaseModal {
     loginButton: this.page.getByRole('button', { name: 'Login' })
   };
 
-  async executeLogin(email = 'hillel-1@aaa.com', password = 'testHillel1!'){
+  async executeLogin(email = process.env.USER_NAME, password = process.env.USER_PASSWORD){
     await this.selectors.emailInput.click();
     await this.selectors.emailInput.fill(email);
     await this.selectors.passwordInput.click();
